@@ -47,6 +47,7 @@ class RegistrasiVaksin extends Migration
 		]);
 
 		$this->forge->addKey('id_reg_vaksin', TRUE);
+		$this->forge->addForeignKey('user_id', 'users', 'id');
 		$this->forge->createTable('registrasi_vaksin');
 	}
 

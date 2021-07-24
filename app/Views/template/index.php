@@ -22,11 +22,13 @@
     <link rel="stylesheet" type="text/css" href="<?= base_url('/vendors_be') ?>/datatables/css/responsive.bootstrap4.min.css">
 	<link rel="stylesheet" type="text/css" href="<?= base_url('/vendors_be') ?>/styles/style.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/vendors_be/parsley/custom.css">
+    <link href="<?= base_url('/vendors_be/select2/dist/css/select2.min.css') ?>" rel="stylesheet" />
 
     <?= $this->renderSection('my-css') ?>
 
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="<?= base_url('/vendors_be/select2/dist/js/select2.full.min.js') ?>"></script>
 </head>
 <body>
 
