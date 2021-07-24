@@ -14,7 +14,7 @@ class Auth extends BaseConfig
 	 *
 	 * @var string
 	 */
-	public $defaultUserGroup;
+	public $defaultUserGroup = 'masyarakat';
 
 	/**
 	 * --------------------------------------------------------------------
@@ -135,7 +135,7 @@ class Auth extends BaseConfig
 	 *
 	 * @var bool
 	 */
-	public $allowRegistration = false;
+	public $allowRegistration = true;
 
 	/**
 	 * --------------------------------------------------------------------
@@ -147,8 +147,8 @@ class Auth extends BaseConfig
 	 *
 	 * @var string|null Name of the ActivatorInterface class
 	 */
-	public $requireActivation = 'Myth\Auth\Authentication\Activators\EmailActivator';
-	// public $requireActivation = false;
+	// public $requireActivation = 'Myth\Auth\Authentication\Activators\EmailActivator';
+	public $requireActivation = null;
 
 	/**
 	 * --------------------------------------------------------------------
