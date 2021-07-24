@@ -18,4 +18,7 @@
 
     <?= $this->include('dashboard/infoNumber') ?>
 
+
+    <?= $this->include('dashboard/infoProv') ?>
+
 <?= $this->endSection() ?>

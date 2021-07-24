@@ -18,13 +18,14 @@
 	<!-- CSS -->
 	<link rel="stylesheet" type="text/css" href="<?= base_url('/vendors_be') ?>/styles/core.css">
 	<link rel="stylesheet" type="text/css" href="<?= base_url('/vendors_be') ?>/styles/icon-font.min.css">
+	<link rel="stylesheet" type="text/css" href="<?= base_url('/vendors_be') ?>/datatables/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url('/vendors_be') ?>/datatables/css/responsive.bootstrap4.min.css">
 	<link rel="stylesheet" type="text/css" href="<?= base_url('/vendors_be') ?>/styles/style.css">
 
     <?= $this->renderSection('my-css') ?>
 
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="<?= base_url('/vendors/select2/dist/js/select2.full.min.js') ?>"></script>
 </head>
 <body>
 
@@ -50,10 +51,20 @@
 
 	
 	<!-- js -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 	<script src="<?= base_url('/vendors_be') ?>/scripts/core.js"></script>
 	<script src="<?= base_url('/vendors_be') ?>/scripts/script.min.js"></script>
 	<script src="<?= base_url('/vendors_be') ?>/scripts/process.js"></script>
 	<script src="<?= base_url('/vendors_be') ?>/scripts/layout-settings.js"></script>
+
+	<!-- Datatable -->
+    <script src="<?= base_url('/vendors_be') ?>/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="<?= base_url('/vendors_be') ?>/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script src="<?= base_url('/vendors_be') ?>/datatables/js/dataTables.responsive.min.js"></script>
+    <script src="<?= base_url('/vendors_be') ?>/datatables/js/responsive.bootstrap4.min.js"></script>
+	<!-- Datatable Setting js -->
+	<script src="<?= base_url() ?>/vendors_be/scripts/datatable-setting.js"></script>
 
 	<script>
         // Jam yang ada di topbar
