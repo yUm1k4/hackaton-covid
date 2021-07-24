@@ -15,7 +15,7 @@ class LoginFilter implements FilterInterface
 	 *
 	 * @return mixed
 	 */
-	public function before(RequestInterface $request, $params = null)
+	public function before(RequestInterface $request, $params = null, $arguments = NULL)
 	{
 		if (! function_exists('logged_in'))
 		{
