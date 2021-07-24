@@ -36,7 +36,7 @@ class BaseController extends Controller
 	 *
 	 * @var array
 	 */
-	protected $helpers = [];
+	protected $helpers = ['auth', 'text', 'url', 'form', 'date', 'zain_helper'];
 
 	/**
 	 * Constructor.
@@ -54,5 +54,8 @@ class BaseController extends Controller
 		// Preload any models, libraries, etc, here.
 		//--------------------------------------------------------------------
 		// E.g.: $this->session = \Config\Services::session();
+		$uri = new \CodeIgniter\HTTP\URI(current_url());
+
+		$this->data['uri_segments'] = $uri->getSegments();
 	}
 }
