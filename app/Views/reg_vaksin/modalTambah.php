@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade bs-example-modal-lg" id="modaltambah" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div class="modal fade bs-example-modal-lg" id="modaltambah" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -15,35 +15,36 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="user_id">User</label>
-                                        <select name="user_id" id="user_id" class="form-control m-0 wide" required data-parsley-required-message="User harus dipilih" data-parsley-trigger="keyup" style="width: 100%">
+                                        <select name="user_id" id="user_id" class="form-control wide p-6" required data-parsley-required-message="User harus dipilih" data-parsley-trigger="keyup" style="width: 100%">
                                             <option value="0" selected>Cari Berdasarkan Username</option>
                                         </select>
-                                        <div class="invalid-feedback errorUserId">
+                                        <div class="invalid-feedback erroruser_id">
 
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="nama">Nama :</label>
-                                        <input type="text" id="nama" name="nama" class="form-control " required data-parsley-required-message="Nama RS harus diisi jika ingin menyimpan" data-parsley-length="[5,50]" data-parsley-length-message="Minimal 5 karakter, maksimal 50 karakter" data-parsley-trigger="keyup">
-                                        <div class="invalid-feedback errorNamaRs">
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="hotline">Hotline :</label>
-                                        <input type="number" id="hotline" name="hotline" class="form-control " required data-parsley-required-message="Hotline harus diisi jika ingin menyimpan" data-parsley-length="[10,13]" data-parsley-length-message="Minimal 10 karakter, maksimal 13 karakter" data-parsley-trigger="keyup" data-parsley-type="number" data-parsley-type-message="Hanya boleh angka">
-                                        <div class="invalid-feedback errorHotline">
+                                        <label>No Induk Kependudukan :</label>
+                                        <input type="number" class="form-control" name="nik" required data-parsley-trigger="keyup" data-parsley-required-message="NIK harus diisi" data-parsley-length="[16,16]" data-parsley-length-message="NIK harus berjumlah 16 digit" data-parsley-type="number" data-parsley-type-message="Hanya boleh angka">
+                                        <div class="invalid-feedback errorNik">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="alamat">Alamat :</label>
-                                        <input type="text" id="alamat" name="alamat" class="form-control " required data-parsley-required-message="Alamat harus diisi" data-parsley-minlength="10" data-parsley-minlength-message="Alamat terlalu singkat" data-parsley-maxlength="200" data-parsley-maxlength-message="Alamat terlalu panjang" data-parsley-trigger="keyup">
+                                        <label>Nomor Handphone :</label>
+                                        <input type="number" class="form-control " name="no_hp" required data-parsley-trigger="keyup" data-parsley-required-message="No HP harus diisi" data-parsley-length="[10,13]" data-parsley-length-message="No HP minimal 10 digit, maximal 13 digit" data-parsley-type="number" data-parsley-type-message="Hanya boleh angka">
+                                        <div class="invalid-feedback errorNoHp">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Alamat Lengkap :</label>
+                                        <input type="text" class="form-control" name="alamat" required data-parsley-trigger="keyup" data-parsley-required-message="Alamat harus diisi" data-parsley-minlength="20" data-parsley-minlength-message="Alamat terlalu singkat" data-parsley-maxlength="254" data-parsley-maxlength-message="Alamat terlalu panjang">
                                         <div class="invalid-feedback errorAlamat">
                                         </div>
                                     </div>
@@ -98,35 +99,15 @@
                 success: function(response) {
                     // jika ada error
                     if (response.error) {
-                        if (response.error.nama) {
+                        if (response.error.user_id) {
                             // jika ada error maka tampilkan pesan errornya
-                            $('#nama').addClass('is-invalid');
-                            $('.errorNamaRs').html(response.error.nama);
+                            $('#user_id').addClass('is-invalid');
+                            $('.erroruser_id').html(response.error.user_id);
                         } else {
                             // jika tdk ada error
-                            $('#nama').removeClass('is-invalid');
-                            $('#nama').addClass('is-valid');
-                            $('.errorNamaRs').html('');
-                        }
-                        if (response.error.hotline) {
-                            // jika ada error maka tampilkan pesan errornya
-                            $('#hotline').addClass('is-invalid');
-                            $('.errorHotline').html(response.error.hotline);
-                        } else {
-                            // jika tdk ada error
-                            $('#hotline').removeClass('is-invalid');
-                            $('#hotline').addClass('is-valid');
-                            $('.errorHotline').html('');
-                        }
-                        if (response.error.alamat) {
-                            // jika ada error maka tampilkan pesan errornya
-                            $('#alamat').addClass('is-invalid');
-                            $('.errorAlamat').html(response.error.alamat);
-                        } else {
-                            // jika tdk ada error
-                            $('#alamat').removeClass('is-invalid');
-                            $('#alamat').addClass('is-valid');
-                            $('.errorAlamat').html('');
+                            $('#user_id').removeClass('is-invalid');
+                            $('#user_id').addClass('is-valid');
+                            $('.erroruser_id').html('');
                         }
                     } else {
                         // jika tidak ada error
@@ -138,7 +119,7 @@
                         });
                         // tutup modal
                         $('#modaltambah').modal('hide');
-                        dataRsRujukan();
+                        dataVaksin();
                     }
                 },
                 // menampilkan pesan error:

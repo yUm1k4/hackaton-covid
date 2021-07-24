@@ -24,16 +24,25 @@ class RegistrasiVaksin extends BaseController
             $userlist = $this->user->select('id,username')
                 ->orderBy('username')
                 ->findAll();
+        } else {
+            $searchTerm = $postData['searchTerm'];
+
+            // Fetch record
+            $userlist = $this->user->select('id,username')
+                ->like('username', $searchTerm)
+                ->orderBy('username')
+                ->findAll(10);
+                // ->findAll();
         }
         $data = array();
         foreach ($userlist as $user) {
             $data[] = array(
-                "id" => $user['id'],
-                "text" => 'Username: ' . $user['username'],
+                "id" => $user->id,
+                "text" => 'Username: ' . $user->username,
             );
         }
 
-        $response['data'] = 'testing';
+        $response['data'] = $data;
         return $this->response->setJSON($response);
     }
 
@@ -89,34 +98,12 @@ class RegistrasiVaksin extends BaseController
             // Validasi
             $validation = \Config\Services::validation();
             $valid = $this->validate([
-                'nama'  => [
-                    'label' => 'Nama',
-                    'rules' => 'required|min_length[5]|max_length[50]|is_unique[reg_vaksin.nama]',
+                'user_id'  => [
+                    'label' => 'user_id',
+                    'rules' => 'required|is_unique[registrasi_vaksin.user_id]',
                     'errors' => [
                         'required'  => '{field} tidak boleh kosong',
-                        'min_length' => '{field} minimal 5 karakter',
-                        'max_length' => '{field} maximal 50 karakter',
                         'is_unique' => '{field} sudah terdaftar',
-                    ]
-                ],
-                'hotline'  => [
-                    'label' => 'Hotline',
-                    'rules' => 'required|min_length[10]|max_length[13]|numeric',
-                    'errors' => [
-                        'required'  => '{field} tidak boleh kosong',
-                        'min_length' => '{field} minimal 10 karakter',
-                        'max_length' => '{field} maximal 13 karakter',
-                        'numeric' => '{field} hanya boleh angka',
-                    
-                    ]
-                ],
-                'alamat'  => [
-                    'label' => 'Alamat',
-                    'rules' => 'required|min_length[10]|max_length[200]',
-                    'errors' => [
-                        'required'  => '{field} tidak boleh kosong',
-                        'min_length' => '{field} minimal 10 karakter',
-                        'max_length' => '{field} maximal 200 karakter'
                     ]
                 ],
             ]);
@@ -125,17 +112,18 @@ class RegistrasiVaksin extends BaseController
             if (!$valid) {
                 $msg = [
                     'error' => [
-                        'nama'  => $validation->getError('nama'),
-                        'hotline'  => $validation->getError('hotline'),
-                        'alamat'  => $validation->getError('alamat')
+                        'user_id'  => $validation->getError('user_id'),
                     ]
                 ];
             } else {
                 // jika validasi sukses (benar)
+                $user_id = $this->request->getVar('user_id');
                 $simpandata = [
-                    'nama' =>  $this->request->getVar('nama'),
-                    'hotline' =>  $this->request->getVar('hotline'),
-                    'alamat' =>  $this->request->getVar('alamat')
+                    'user_id' =>  $user_id,
+                    'nik' =>  $this->request->getVar('nik'),
+                    'no_hp' =>  $this->request->getVar('no_hp'),
+                    'alamat' =>  $this->request->getVar('alamat'),
+                    'status' =>  'pending',
                 ];
                 $this->reg_vaksin->insert($simpandata);
                 $msg = ['sukses' => 'Registrasi Vaksin baru berhasil ditambahkan'];
