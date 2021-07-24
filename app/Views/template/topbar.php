@@ -26,7 +26,7 @@
                     <span class="user-icon">
                         <img src="<?= base_url('images/avatar.png/') ?>" width="90" class="img-fluid">
                     </span>
-                    <span class="user-name">Zainudin</span>
+                    <span class="user-name"><?= xss(user()->username) ?></span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
                     <a class="dropdown-item btn-logout" href="<?= base_url('logout') ?>"><i class="dw dw-logout"></i> Log Out</a>

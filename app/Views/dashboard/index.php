@@ -8,14 +8,13 @@
             </div>
             <div class="col-md-8">
                 <h4 class="font-20 weight-500 mb-10 text-capitalize">
-                    <?= salam(date('H:i')) ?>, <div class="weight-600 font-30 text-blue">Zainudin Abdullah!</div>                </h4>
+                    <?= salam(date('H:i')) ?>, <div class="weight-600 font-30 text-blue"><?= xss(user()->username) ?>!</div>                </h4>
                 <p class="font-18 max-width-800">
                 "Kenikmatan hidup paling nikmat di dunia ini adalah sehat karena apa pun yang kamu miliki di dunia ini tak akan kamu nikmati, jika kamu sakit" - Dani Kaizen
                 </p>
             </div>
         </div>
-    </div>
-
+    </div
     <?= $this->include('dashboard/infoNumber') ?>
 
 
