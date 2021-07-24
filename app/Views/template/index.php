@@ -38,7 +38,7 @@
 
 	 <!-- Main Container -->
 	 <div class="main-container">
-        <div class="pd-ltr-20 xs-pd-20-10">
+        <div class="pd-ltr-20 xs-pd-20-10 pb-20">
 
             <!-- Begin Contnet -->
             <?= $this->renderSection('main-content') ?>

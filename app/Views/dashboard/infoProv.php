@@ -12,7 +12,7 @@
                     </div>
                 </div>
             </div>
-            <div class="pb-20">
+            <div class="pb-20 px-2">
                 <small>
                     <div class="table-responsive">
                         <table class="data-table table hover" cellspacing="0">
@@ -26,7 +26,15 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                
+                                <?php $no = 1; foreach ($provinsi as $prov) { ?>
+                                    <tr>
+                                        <td class="text-center"><?= $no++ ?>.</td>
+                                        <td><?= $prov['attributes']['Provinsi'] ?></td>
+                                        <td class="text-center"><?= $prov['attributes']['Kasus_Posi'] ?></td>
+                                        <td class="text-center"><?= $prov['attributes']['Kasus_Semb'] ?></td>
+                                        <td class="text-center"><?= $prov['attributes']['Kasus_Meni'] ?></td>
+                                    </tr>
+                                <?php } ?>
                             </tbody>
                         </table>
                     </div>
