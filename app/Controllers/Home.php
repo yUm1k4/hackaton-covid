@@ -9,6 +9,6 @@ class Home extends BaseController
 	    $data = [
 	        'title'     => 'Hackaton - Covid 19'
 	    ];
-		return view('template/index', $data);
+		return view('dashboard/index', $data);
 	}
 }
