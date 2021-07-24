@@ -34,6 +34,12 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 
+// Pengaduan Kategori
+$routes->get('/rs_rujukan', 'RsRujukan::index', ['filter' => 'role:admin']);
+$routes->get('/rs_rujukan/ambildata', 'RsRujukan::ambildata', ['filter' => 'role:admin']);
+$routes->get('/rs_rujukan/formtambah', 'RsRujukan::formtambah', ['filter' => 'role:admin']);
+$routes->post('/rs_rujukan/simpandata', 'RsRujukan::simpandata', ['filter' => 'role:admin']);
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

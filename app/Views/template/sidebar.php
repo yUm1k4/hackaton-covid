@@ -16,6 +16,11 @@
 							<span class="micon dw dw-house-1"></span><span class="mtext">Dashboard</span>
 						</a>
 					</li>
+					<li>
+						<a href="<?= base_url('rs_rujukan') ?>" class="dropdown-toggle no-arrow">
+							<span class="micon dw dw-hospital"></span><span class="mtext">RS Rujukan</span>
+						</a>
+					</li>
 				</ul>
 			</div>
 		</div>
