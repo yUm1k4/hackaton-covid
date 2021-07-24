@@ -2,6 +2,7 @@
 
 use Config\Email;
 use Myth\Auth\Entities\User;
+use CodeIgniter\Config\Services;
 
 /**
  * Class EmailActivator
@@ -21,7 +22,7 @@ class EmailActivator extends BaseActivator implements ActivatorInterface
      */
     public function send(User $user = null): bool
     {
-        $email = service('email');
+        $email = Services::email();
         $config = new Email();
 
         $settings = $this->getActivatorSettings();
@@ -40,5 +41,10 @@ class EmailActivator extends BaseActivator implements ActivatorInterface
         }
 
         return true;
+    }
+
+    public function error(): string
+    {
+        return $this->error ?? '';
     }
 }

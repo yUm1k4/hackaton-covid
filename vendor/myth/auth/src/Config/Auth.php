@@ -135,7 +135,7 @@ class Auth extends BaseConfig
 	 *
 	 * @var bool
 	 */
-	public $allowRegistration = true;
+	public $allowRegistration = false;
 
 	/**
 	 * --------------------------------------------------------------------
@@ -148,6 +148,7 @@ class Auth extends BaseConfig
 	 * @var string|null Name of the ActivatorInterface class
 	 */
 	public $requireActivation = 'Myth\Auth\Authentication\Activators\EmailActivator';
+	// public $requireActivation = false;
 
 	/**
 	 * --------------------------------------------------------------------
@@ -159,7 +160,8 @@ class Auth extends BaseConfig
 	 *
 	 * @var string|null Name of the ResetterInterface class
 	 */
-	public $activeResetter = 'Myth\Auth\Authentication\Resetters\EmailResetter';
+	// public $activeResetter = 'Myth\Auth\Authentication\Resetters\EmailResetter';
+	public $activeResetter = false;
 
 	/**
 	 * --------------------------------------------------------------------
@@ -174,7 +176,7 @@ class Auth extends BaseConfig
 	 *
 	 * @var bool
 	 */
-	public $allowRemembering = false;
+	public $allowRemembering = true;
 
 	/**
 	 * --------------------------------------------------------------------
@@ -288,7 +290,7 @@ class Auth extends BaseConfig
 		'Myth\Auth\Authentication\Passwords\CompositionValidator',
 		'Myth\Auth\Authentication\Passwords\NothingPersonalValidator',
 		'Myth\Auth\Authentication\Passwords\DictionaryValidator',
-		// 'Myth\Auth\Authentication\Passwords\PwnedValidator',
+		'Myth\Auth\Authentication\Passwords\PwnedValidator',
 	];
 
 	/**
