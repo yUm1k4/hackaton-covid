@@ -34,7 +34,7 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 
-// Pengaduan Kategori
+// RS Rujukan
 $routes->get('/rs_rujukan', 'RsRujukan::index', ['filter' => 'role:admin']);
 $routes->get('/rs_rujukan/ambildata', 'RsRujukan::ambildata', ['filter' => 'role:admin']);
 $routes->get('/rs_rujukan/formtambah', 'RsRujukan::formtambah', ['filter' => 'role:admin']);
@@ -42,6 +42,15 @@ $routes->post('/rs_rujukan/simpandata', 'RsRujukan::simpandata', ['filter' => 'r
 $routes->post('/rs_rujukan/formedit', 'RsRujukan::formedit', ['filter' => 'role:admin']);
 $routes->post('/rs_rujukan/updatedata', 'RsRujukan::updatedata', ['filter' => 'role:admin']);
 $routes->post('/rs_rujukan/hapus', 'RsRujukan::hapus', ['filter' => 'role:admin']);
+
+// Registrasi Vakin
+$routes->get('/reg_vaksin', 'RegistrasiVaksin::index', ['filter' => 'role:admin,masyarakat']);
+$routes->get('/reg_vaksin/ambildata', 'RegistrasiVaksin::ambildata', ['filter' => 'role:admin,masyarakat']);
+$routes->get('/reg_vaksin/formtambah', 'RegistrasiVaksin::formtambah', ['filter' => 'role:admin,masyarakat']);
+$routes->post('/reg_vaksin/simpandata', 'RegistrasiVaksin::simpandata', ['filter' => 'role:admin,masyarakat']);
+$routes->post('/reg_vaksin/formedit', 'RegistrasiVaksin::formedit', ['filter' => 'role:admin,masyarakat']);
+$routes->post('/reg_vaksin/updatedata', 'RegistrasiVaksin::updatedata', ['filter' => 'role:admin,masyarakat']);
+$routes->post('/reg_vaksin/hapus', 'RegistrasiVaksin::hapus', ['filter' => 'role:admin,masyarakat']);
 
 /*
  * --------------------------------------------------------------------
