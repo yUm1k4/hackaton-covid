@@ -103,7 +103,7 @@ class RegistrasiVaksin extends BaseController
                     'rules' => 'required|is_unique[registrasi_vaksin.user_id]',
                     'errors' => [
                         'required'  => '{field} tidak boleh kosong',
-                        'is_unique' => '{field} sudah terdaftar',
+                        'is_unique' => 'User sudah terdaftar',
                     ]
                 ],
             ]);

@@ -12,4 +12,6 @@ class RegistrasiVaksinModel extends Model
     protected $allowedFields = [
         'user_id', 'nik', 'no_hp', 'alamat', 'status'
     ];
+
+    protected $useTimestamps = true;
 }
