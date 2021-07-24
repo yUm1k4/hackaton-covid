@@ -24,19 +24,6 @@ function url($no)
 }
 
 /**
- * ex: setting()->nama_field |
- * Utk tabel setting |
- * Mengembalikan berupa object
- */
-function setting()
-{
-    $setting = new SettingModel;
-    $data = $setting->where('id_setting', 1)->get()->getRow();
-
-    return $data;
-}
-
-/**
  * ex: salam() |
  * Utk salam berdasarkan waktu |
  */

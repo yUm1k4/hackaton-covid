@@ -6,6 +6,9 @@ class Home extends BaseController
 {
 	public function index()
 	{
-		return view('welcome_message');
+	    $data = [
+	        'title'     => 'Hackaton - Covid 19'
+	    ];
+		return view('template/index', $data);
 	}
 }
