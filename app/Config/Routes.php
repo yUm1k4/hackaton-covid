@@ -39,6 +39,9 @@ $routes->get('/rs_rujukan', 'RsRujukan::index', ['filter' => 'role:admin']);
 $routes->get('/rs_rujukan/ambildata', 'RsRujukan::ambildata', ['filter' => 'role:admin']);
 $routes->get('/rs_rujukan/formtambah', 'RsRujukan::formtambah', ['filter' => 'role:admin']);
 $routes->post('/rs_rujukan/simpandata', 'RsRujukan::simpandata', ['filter' => 'role:admin']);
+$routes->post('/rs_rujukan/formedit', 'RsRujukan::formedit', ['filter' => 'role:admin']);
+$routes->post('/rs_rujukan/updatedata', 'RsRujukan::updatedata', ['filter' => 'role:admin']);
+$routes->post('/rs_rujukan/hapus', 'RsRujukan::hapus', ['filter' => 'role:admin']);
 
 /*
  * --------------------------------------------------------------------

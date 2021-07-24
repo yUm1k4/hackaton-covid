@@ -1,4 +1,4 @@
-<table class="data-table table hover" id="tblKategori">
+<table class="data-table table hover" id="tblRsRujukan">
     <thead class="text-center">
         <tr>
             <th>No.</th>
@@ -60,5 +60,64 @@
                 }
             },
         });
-    })
+    });
+
+    function edit(id_rs_rujukan) {
+        $.ajax({
+            type: "POST",
+            url: "<?= site_url('/rs_rujukan/formedit') ?>",
+            data: {
+                id_rs_rujukan: id_rs_rujukan
+            },
+            dataType: "json",
+            success: function(response) {
+                if (response.sukses) {
+                    $('.viewmodal').html(response.sukses).show();
+                    $('#modaledit').modal('show');
+                }
+            },
+            // menampilkan pesan error:
+            error: function(xhr, ajaxOptions, thrownError) {
+                alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+            }
+        });
+    }
+
+    function hapus(id_rs_rujukan) {
+        Swal.fire({
+            title: 'Hapus Data',
+            text: `Yakin ingin menghapus data? Data yang terhapus tidak akan bisa dikembalikan`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Hapus Data!',
+            cancelButtonText: 'Tidak'
+        }).then((result) => {
+            if (result.value) {
+                $.ajax({
+                    type: "POST",
+                    url: "<?= site_url('/rs_rujukan/hapus') ?>",
+                    data: {
+                        id_rs_rujukan: id_rs_rujukan
+                    },
+                    dataType: "json",
+                    success: function(response) {
+                        if (response.sukses) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Berhasil',
+                                text: response.sukses
+                            })
+                            dataRsRujukan();
+                        }
+                    },
+                    // menampilkan pesan error:
+                    error: function(xhr, ajaxOptions, thrownError) {
+                        alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+                    }
+                });
+            }
+        });
+    }
 </script>
