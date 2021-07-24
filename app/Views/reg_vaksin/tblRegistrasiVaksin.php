@@ -37,7 +37,11 @@
                             <i class="dw dw-more"></i>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                            <!-- <button class="dropdown-item" onclick="edit(<?= $row['id_reg_vaksin'] ?>)"><i class="dw dw-edit2"></i> Edit</button> -->
+                            <?php if ($row['status'] == 'pending') : ?>
+                                <a href="javascript:;" class="dropdown-item" onclick="proses(<?= $row['id_reg_vaksin'] ?>)"><i class="dw dw-undo2"></i> Proses</a>
+                            <?php elseif ($row['status'] == 'proses') : ?>
+                                <a class="dropdown-item" href="javascript:;" onclick="selesai(<?= $row['id_reg_vaksin'] ?>)"><i class="dw dw-checked"></i> Selesai</a>
+                            <?php endif; ?>
                             <button type="button" onclick="hapus(<?= $row['id_reg_vaksin'] ?>)" class="dropdown-item"><i class="dw dw-delete-3"></i> Hapus</button>
                         </div>
                     </div>
@@ -108,6 +112,48 @@
                         alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
                     }
                 });
+            }
+        });
+    }
+
+    function proses(id_reg_vaksin) {
+        $.ajax({
+            type: "POST",
+            url: "<?= base_url('reg_vaksin/formProses/' . $row['id_reg_vaksin']) ?>",
+            data: {
+                id_reg_vaksin: id_reg_vaksin
+            },
+            dataType: "json",
+            success: function(response) {
+                if (response.sukses) {
+                    $('.viewmodal').html(response.sukses).show();
+                    $('#modalproses').modal('show');
+                }
+            },
+            // menampilkan pesan error:
+            error: function(xhr, ajaxOptions, thrownError) {
+                alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+            }
+        });
+    }
+
+    function selesai(id_reg_vaksin) {
+        $.ajax({
+            type: "POST",
+            url: "<?= base_url('reg_vaksin/formSelesai/' . $row['id_reg_vaksin']) ?>",
+            data: {
+                id_reg_vaksin: id_reg_vaksin
+            },
+            dataType: "json",
+            success: function(response) {
+                if (response.sukses) {
+                    $('.viewmodal').html(response.sukses).show();
+                    $('#modalselesai').modal('show');
+                }
+            },
+            // menampilkan pesan error:
+            error: function(xhr, ajaxOptions, thrownError) {
+                alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
             }
         });
     }

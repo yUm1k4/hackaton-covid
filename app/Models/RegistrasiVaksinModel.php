@@ -10,7 +10,7 @@ class RegistrasiVaksinModel extends Model
     protected $primaryKey = 'id_reg_vaksin';
 
     protected $allowedFields = [
-        'user_id', 'nik', 'no_hp', 'alamat', 'status'
+        'user_id', 'nik', 'no_hp', 'alamat', 'status', 'hasil_akhir'
     ];
 
     protected $useTimestamps = true;

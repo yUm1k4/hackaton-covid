@@ -50,6 +50,10 @@ $routes->get('/reg_vaksin/formtambah', 'RegistrasiVaksin::formtambah', ['filter'
 $routes->post('/reg_vaksin/simpandata', 'RegistrasiVaksin::simpandata', ['filter' => 'role:admin']);
 $routes->post('/reg_vaksin/hapus', 'RegistrasiVaksin::hapus', ['filter' => 'role:admin']);
 $routes->post('/reg_vaksin/get_user', 'RegistrasiVaksin::getUser', ['filter' => 'role:admin']);
+$routes->post('/reg_vaksin/formProses/(:num)', 'RegistrasiVaksin::formProses/$1', ['filter' => 'role:admin']);
+$routes->post('/reg_vaksin/updateProses', 'RegistrasiVaksin::updateProses', ['filter' => 'role:admin']);
+$routes->post('/reg_vaksin/formSelesai/(:num)', 'RegistrasiVaksin::formSelesai/$1', ['filter' => 'role:admin']);
+$routes->post('/reg_vaksin/updateSelesai', 'RegistrasiVaksin::updateSelesai', ['filter' => 'role:admin']);
 
 /*
  * --------------------------------------------------------------------

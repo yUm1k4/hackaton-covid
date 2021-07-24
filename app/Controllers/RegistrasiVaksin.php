@@ -147,4 +147,83 @@ class RegistrasiVaksin extends BaseController
             return redirect()->to(base_url(''));
         }
     }
+    
+    public function formProses()
+    {
+        if ($this->request->isAJAX()) {
+            $id_reg_vaksin = $this->request->getVar('id_reg_vaksin');
+            $row = $this->reg_vaksin->find($id_reg_vaksin);
+
+            $data = [
+                'id_reg_vaksin'      => $row['id_reg_vaksin']
+            ];
+
+            $msg = [
+                'sukses' => view('reg_vaksin/modalProses', $data)
+            ];
+
+            echo json_encode($msg);
+        } else {
+            session()->setFlashdata('error', 'Maaf tidak dapat diproses');
+            return redirect()->back();
+        }
+    }
+
+    public function updateProses()
+    {
+        if ($this->request->isAJAX()) {
+            $id_reg_vaksin = $this->request->getVar('id_reg_vaksin');
+            $data = [
+                'id_reg_vaksin'  =>  $id_reg_vaksin,
+                'status'        => 'proses'
+            ];
+
+            $this->reg_vaksin->update($id_reg_vaksin, $data);
+            $msg = ['sukses' => 'Status User Vaksinasi telah berhasil berubah!'];
+            echo json_encode($msg);
+        } else {
+            session()->setFlashdata('error', 'Maaf tidak dapat diproses');
+            return redirect()->back();
+        }
+    }
+
+    public function formSelesai()
+    {
+        if ($this->request->isAJAX()) {
+            $id_reg_vaksin = $this->request->getVar('id_reg_vaksin');
+            $row = $this->reg_vaksin->find($id_reg_vaksin);
+
+            $data = [
+                'id_reg_vaksin'      => $row['id_reg_vaksin']
+            ];
+
+            $msg = [
+                'sukses' => view('reg_vaksin/modalSelesai', $data)
+            ];
+
+            echo json_encode($msg);
+        } else {
+            session()->setFlashdata('error', 'Maaf tidak dapat diproses');
+            return redirect()->back();
+        }
+    }
+
+    public function updateSelesai()
+    {
+        if ($this->request->isAJAX()) {
+            $data = [
+                'id_reg_vaksin'  =>  $this->request->getVar('id_reg_vaksin'),
+                'hasil_akhir'   =>  $this->request->getVar('hasil_akhir'),
+                'status'        => 'selesai'
+            ];
+            $id_reg_vaksin = $this->request->getVar('id_reg_vaksin');
+
+            $this->reg_vaksin->update($id_reg_vaksin, $data);
+            $msg = ['sukses' => 'Status User Vaksinasi telah berhasil berubah!'];
+            echo json_encode($msg);
+        } else {
+            session()->setFlashdata('error', 'Maaf tidak dapat diproses');
+            return redirect()->back();
+        }
+    }
 }
