@@ -21,6 +21,7 @@
 	<link rel="stylesheet" type="text/css" href="<?= base_url('/vendors_be') ?>/datatables/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url('/vendors_be') ?>/datatables/css/responsive.bootstrap4.min.css">
 	<link rel="stylesheet" type="text/css" href="<?= base_url('/vendors_be') ?>/styles/style.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>/vendors_be/parsley/custom.css">
 
     <?= $this->renderSection('my-css') ?>
 
@@ -65,6 +66,13 @@
     <script src="<?= base_url('/vendors_be') ?>/datatables/js/responsive.bootstrap4.min.js"></script>
 	<!-- Datatable Setting js -->
 	<script src="<?= base_url() ?>/vendors_be/scripts/datatable-setting.js"></script>
+
+    <!-- Sweet Alert 2 -->
+    <script src="<?= base_url() ?>/vendors_be/scripts/sweetalert2.all.min.js"></script>
+    <script src="<?= base_url() ?>/vendors_be/scripts/sweetalert2.custom.js"></script>
+
+    <!-- Parsley -->
+    <script src="<?= base_url() ?>/vendors_be/parsley/parsley.min.js"></script>
 
 	<script>
         // Jam yang ada di topbar
